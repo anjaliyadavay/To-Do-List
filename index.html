@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To_Do_List</title>
+
+    <style>
+        body {
+            background-image: linear-gradient(#e118eb, #efedaa, #97f1dc);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .conatiner {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .childcon {
+            height: 500px;
+            width: 400px;
+            display: flex;
+            margin-top: 50px;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #input {
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        #btn {
+            margin: 20px;
+            padding: 11px;
+            border-radius: 10px;
+            width: 150px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background-color: #e118eb;
+            border: 2px solid #e118eb;
+            box-shadow: 4px 10px 10px #e057e7;
+
+        }
+
+        li {
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            list-style: none;
+            display: block;
+        }
+
+        #delet {
+            margin: 20px;
+            padding: 7px;
+            border-radius: 10px;
+            width: 100px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #e118eb;
+            border: #e118eb;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="conatiner">
+        <div class="childcon">
+            <h1><u>To Do List</u></h1>
+            <input type="text" id="input" placeholder="Enter something">
+
+            <button id="btn">Add Your List</button>
+            <div class="itemlist">
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let btn = document.querySelector("#btn");
+        let input = document.querySelector("#input");
+        let itemlist = document.querySelector(".itemlist");
+
+        btn.addEventListener("click", () => {
+            if (input.value == "") {
+                alert("Enter the task");
+            } else {
+                let newelement = document.createElement("li");
+                newelement.innerHTML = `${input.value} <button id="delet" class="fa-regular fa-trash-can">delete</button> `;
+                itemlist.appendChild(newelement);
+                input.value = "";
+
+                newelement.querySelector("button").addEventListener("click", () => {
+                    newelement.remove();
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>
